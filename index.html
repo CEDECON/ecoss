@@ -508,12 +508,51 @@
       <div class="section-tag">💬 Feedback</div>
       <h2 class="section-title">Suggestions &amp; Feedback</h2>
     </div>
-    <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.25rem;">Have a suggestion? Let us know.</p>
-    <!-- Your feedback form code remains here (same as before) -->
-    <div class="feedback-alt">
-      <a href="mailto:ecoss@cedecon.tu.edu.np" class="fb-alt-item"><span>📧</span><div><strong>Email ECOSS</strong><br/><small>ecoss@cedecon.tu.edu.np</small></div></a>
+    <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.25rem;">Have a suggestion for ECOSS? Found an error on the site? Want to propose a new event? Let us know — your input shapes how we serve students.</p>
+    <div class="feedback-wrap">
+      <div class="feedback-form">
+        <div class="fb-row">
+          <div class="fb-group">
+            <label class="fb-label" for="fb-name">Your Name <span style="color:var(--muted);font-size:0.7rem;">(optional)</span></label>
+            <input class="fb-input" type="text" id="fb-name" placeholder="e.g. Ram Bahadur"/>
+          </div>
+          <div class="fb-group">
+            <label class="fb-label" for="fb-type">Category</label>
+            <select class="fb-input" id="fb-type">
+              <option value="">— Select —</option>
+              <option value="website">Website / Content Error</option>
+              <option value="schedule">Schedule Issue</option>
+              <option value="resources">Resources Request</option>
+              <option value="event">Event Suggestion</option>
+              <option value="general">General Suggestion</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fb-group">
+          <label class="fb-label" for="fb-msg">Your Message <span style="color:var(--red);font-size:0.7rem;">*</span></label>
+          <textarea class="fb-input fb-textarea" id="fb-msg" placeholder="Write your feedback or suggestion here…"></textarea>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <button class="fb-btn" onclick="submitFeedback()">Send Feedback →</button>
+          <span id="fb-status" style="font-size:0.8rem;color:var(--muted);display:none;"></span>
+        </div>
+      </div>
+      <div class="feedback-alt">
+        <p class="fb-alt-title">Other Ways to Reach Us</p>
+        <a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" target="_blank" class="fb-alt-item">
+          <span>📲</span><div><strong>WhatsApp Group</strong><br/><small>Fastest response — post in the group</small></div>
+        </a>
+        <a href="mailto:ecoss@cedecon.tu.edu.np" class="fb-alt-item">
+          <span>📧</span><div><strong>Email ECOSS</strong><br/><small>ecoss@cedecon.tu.edu.np</small></div>
+        </a>
+        <a href="https://forms.gle/R5UCfLrn1uyQC6wh8" target="_blank" class="fb-alt-item">
+          <span>📋</span><div><strong>Google Form</strong><br/><small>Anonymous feedback form</small></div>
+        </a>
+      </div>
     </div>
   </section>
+
 </main>
 
 <footer>
