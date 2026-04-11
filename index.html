@@ -218,10 +218,266 @@
 </div>
 
 <main>
-  <!-- Notices, Schedule, Resources, Quick Info, Team, Archive, Feedback sections are exactly the same as your working version -->
-  <!-- (I kept them 100% identical to avoid any issues) -->
 
-  <!-- ... (All sections from your previous working file) ... -->
+  <section id="notices">
+    <div class="section-header">
+      <div class="section-tag">📢 Latest</div>
+      <h2 class="section-title">Notices &amp; Announcements</h2>
+    </div>
+    <div class="notices-grid">
+
+      <!-- URGENT WEBINAR -->
+      <div class="notice-card urgent">
+        <div class="pulse"></div>
+        <div class="notice-body">
+          <h4>🌐 WEBINAR — World Economic Trends &amp; Their Impact on Smaller Nations</h4>
+          <p>
+            Join this insightful online session on global economics and its effects on developing nations.<br/><br/>
+            💻 <strong>Modality:</strong> Online (Zoom Webinar)<br/>
+            📅 <strong>Date:</strong> April 10, 2026 (Friday)<br/>
+            ⏰ <strong>Time:</strong> 8:00 PM – 9:00 PM (NPT)<br/>
+            🎙️ <strong>Speaker:</strong> Dr. Robin Dhakal<br/><br/>
+            ⚠️ <strong>Registration closes 5:00 PM on April 9.</strong> Fill the form now!<br/>
+            👉 <a href="https://forms.gle/R5UCfLrn1uyQC6wh8" target="_blank" style="color:var(--gold);font-weight:600;">Register Here →</a>
+          </p>
+          <div class="nmeta">
+            <span class="ntag r">URGENT</span>
+            <span class="ntag r">Reg. closes April 9</span>
+            <span class="ntag b">April 10 · Friday</span>
+            <span class="ntag">WEBINAR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule change notice -->
+      <div class="notice-card">
+        <div class="dot"></div>
+        <div class="notice-body">
+          <h4>🗓️ Class Schedule Change – Effective Next Week</h4>
+          <p>From next week, classes will run <strong>Monday to Wednesday</strong> instead of Sunday to Tuesday. Thu/Fri/Sat will be assignment days. Please check the updated schedule below.</p>
+          <div class="nmeta">
+            <span class="ntag g">SCHEDULE UPDATE</span>
+            <span class="ntag b">From Next Week</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scholarship -->
+      <div class="notice-card">
+        <div class="dot"></div>
+        <div class="notice-body">
+          <h4>🎓 Scholarship Applications Open – 1st Semester Students</h4>
+          <p>
+            Scholarship forms are now open for 1st Semester students. Apply online.<br/><br/>
+            🌐 <strong>Apply at:</strong> <a href="https://www.uch.edu.np" target="_blank" style="color:var(--gold);">www.uch.edu.np</a><br/>
+            📅 <strong>Deadline:</strong> Baisakh 20, 2083
+          </p>
+          <div class="nmeta">
+            <span class="ntag">SCHOLARSHIP</span>
+            <span class="ntag b">1st Sem</span>
+            <span class="ntag r">Deadline: Baisakh 20</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Daily Notes -->
+      <div class="notice-card">
+        <div class="dot"></div>
+        <div class="notice-body">
+          <h4>🗂️ Daily Class Notes Available on Google Drive</h4>
+          <p>ECOSS uploads class notes on the same day classes are held. Check the Resources section for your section's notes. Other semesters coming soon.</p>
+          <div class="nmeta">
+            <span class="ntag">ECOSS INITIATIVE</span>
+            <span class="ntag b">1st Sem</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Last Updated -->
+    <p style="margin-top:1rem;text-align:right;font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--muted);">
+      🕒 Last Updated: <span style="color:var(--gold);">April 9, 2026</span>
+    </p>
+  </section>
+  <section id="schedule">
+    <div class="section-header">
+      <div class="section-tag">🗓️ Routine</div>
+      <h2 class="section-title">Class Schedule – 1st Semester</h2>
+    </div>
+    <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1rem;">
+      Updated: Mon–Wed classes effective next week &nbsp;·&nbsp; Section A: Odd Roll Nos. (Room #116) &nbsp;·&nbsp; Section B: Even Roll Nos. (Room #3)
+    </p>
+    <div class="schedule-tabs">
+      <button class="tab-btn active" onclick="showTab('secA',this)">Section A</button>
+      <button class="tab-btn" onclick="showTab('secB',this)">Section B</button>
+    </div>
+
+    <div id="secA" class="tbl-wrap">
+      <table>
+        <thead><tr><th>Day</th><th>11:00–12:00</th><th>12:00–13:00</th><th>13:00–13:30</th><th>13:30–14:30</th><th>14:30–15:30</th><th>15:30–16:30</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="dbadge">MON</span></td>
+            <td><div class="cs">Micro I</div><div class="ct">RBT</div></td>
+            <td><div class="cs">Macro I</div><div class="ct">BRK</div></td>
+            <td class="bk" rowspan="6">B<br/>R<br/>E<br/>A<br/>K</td>
+            <td><div class="cs">Math.Eco</div><div class="ct">DBA</div></td>
+            <td><div class="cs">Dev. Eco I</div><div class="ct">DA</div></td>
+            <td><div class="cs">HET</div><div class="ct">SB</div></td>
+          </tr>
+          <tr>
+            <td><span class="dbadge">TUE</span></td>
+            <td><div class="cs">Micro I</div><div class="ct">PN</div></td>
+            <td><div class="cs">Macro I</div><div class="ct">SRA</div></td>
+            <td><div class="cs">Math. Eco</div><div class="ct">NBA</div></td>
+            <td><div class="cs">Dev. Econ I</div><div class="ct">KRA</div></td>
+            <td><div class="cs">HET</div><div class="ct">RCP</div></td>
+          </tr>
+          <tr>
+            <td><span class="dbadge">WED</span></td>
+            <td><div class="cs">Micro I</div><div class="ct">PN</div></td>
+            <td><div class="cs">Macro I</div><div class="ct">RPG</div></td>
+            <td><div class="cs">Math.Eco</div><div class="ct">DBA</div></td>
+            <td><div class="cs">HET</div><div class="ct">RCP</div></td>
+            <td><div class="cs">Dev.Eco</div><div class="ct">NKR</div></td>
+          </tr>
+          <tr class="asgn"><td><span class="dbadge">THU</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+          <tr class="asgn"><td><span class="dbadge">FRI</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+          <tr class="asgn"><td><span class="dbadge">SAT</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="secB" class="tbl-wrap" style="display:none;">
+      <table>
+        <thead><tr><th>Day</th><th>11:00–12:00</th><th>12:00–13:00</th><th>13:00–13:30</th><th>13:30–14:30</th><th>14:30–15:30</th><th>15:30–16:30</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="dbadge">MON</span></td>
+            <td><div class="cs">Macro I</div><div class="ct">BRK</div></td>
+            <td><div class="cs">Micro I</div><div class="ct">RBT</div></td>
+            <td class="bk" rowspan="6">B<br/>R<br/>E<br/>A<br/>K</td>
+            <td><div class="cs">Dev. Eco I</div><div class="ct">DA</div></td>
+            <td><div class="cs">Math.Eco</div><div class="ct">DBA</div></td>
+            <td><div class="cs">HET</div><div class="ct">RCP</div></td>
+          </tr>
+          <tr>
+            <td><span class="dbadge">TUE</span></td>
+            <td><div class="cs">Macro I</div><div class="ct">SRA</div></td>
+            <td><div class="cs">Micro I</div><div class="ct">PN</div></td>
+            <td><div class="cs">Dev. Econ I</div><div class="ct">KRA</div></td>
+            <td><div class="cs">Math.Eco</div><div class="ct">NBA</div></td>
+            <td><div class="cs">HET</div><div class="ct">SB</div></td>
+          </tr>
+          <tr>
+            <td><span class="dbadge">WED</span></td>
+            <td><div class="cs">Macro I</div><div class="ct">RPG</div></td>
+            <td><div class="cs">Micro I</div><div class="ct">PN</div></td>
+            <td><div class="cs">Dev.Eco I</div><div class="ct">SA</div></td>
+            <td><div class="cs">Math.Eco</div><div class="ct">DBA</div></td>
+            <td><div class="cs">HET</div><div class="ct">RCP</div></td>
+          </tr>
+          <tr class="asgn"><td><span class="dbadge">THU</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+          <tr class="asgn"><td><span class="dbadge">FRI</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+          <tr class="asgn"><td><span class="dbadge">SAT</span></td><td colspan="5" style="text-align:center;">Assignment · Term Paper Presentation · Guest Lecturer</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="fkey">
+      <p class="fkey-title">Faculty Key</p>
+      <div class="fkey-grid">
+        <span class="fkey-item"><b>BRK</b> – Baburam Karki</span>
+        <span class="fkey-item"><b>DBA</b> – Dr. Dipak Bahadur Adhikari</span>
+        <span class="fkey-item"><b>KRA</b> – Prof.Dr. Krishna R Acharya</span>
+        <span class="fkey-item"><b>SB</b> – Prof.Dr. Shiva Bhusal</span>
+        <span class="fkey-item"><b>RCP</b> – Dr. Ramesh Chandra Paudel</span>
+        <span class="fkey-item"><b>NKR</b> – Dr. Nirmal K. Raut</span>
+        <span class="fkey-item"><b>RBT</b> – Dr. Resham Bahadur Thapa</span>
+        <span class="fkey-item"><b>PN</b> – Dr. Pramshu Nepal</span>
+        <span class="fkey-item"><b>DA</b> – Damodar Adhikari</span>
+        <span class="fkey-item"><b>SA</b> – Prof.Dr. Sanjay Acharya</span>
+        <span class="fkey-item"><b>SRA</b> – Prof.Dr. Shiva R Adhikari</span>
+        <span class="fkey-item"><b>NBA</b> – Naveen Adhikari</span>
+        <span class="fkey-item"><b>RPG</b> – Prof.Dr. Ram Prasad Gyanwaly</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="section-header">
+      <div class="section-tag">📁 Drive</div>
+      <h2 class="section-title">Study Resources &amp; Notes</h2>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="https://drive.google.com/drive/folders/1TikFHWWUM8_8QjYA2St8rAo3MpXIfNRY" target="_blank">
+        <div class="res-icon">📂</div><h4>1st Sem – Section B Notes</h4>
+        <p>Daily class notes for Section B (Even Roll Numbers). Updated same-day after class.</p>
+        <div class="res-link">Open Google Drive</div>
+      </a>
+      <a class="res-card" href="https://drive.google.com/drive/folders/1FCQ5mj0k0T1iDP4WLaT3l7FwCCnHqT72" target="_blank">
+        <div class="res-icon">📂</div><h4>1st Sem – Section A Notes</h4>
+        <p>Daily class notes for Section A (Odd Roll Numbers). Updated same-day after class.</p>
+        <div class="res-link">Open Google Drive</div>
+      </a>
+      <a class="res-card" href="https://drive.google.com/drive/folders/1-729Gowt5KVHL1Wwcx17E-rPxDqZdfP7" target="_blank">
+        <div class="res-icon">🗄️</div><h4>Master Drive – All Semesters</h4>
+        <p>Central repository for all semester notes. Notes for other semesters coming soon.</p>
+        <div class="res-link">Open Master Drive</div>
+      </a>
+      <div class="res-card" style="opacity:0.5;cursor:default;">
+        <div class="res-icon">🔒</div><h4>3rd Sem Notes</h4>
+        <p>Notes for 3rd Semester (2080). Coming soon via Master Drive.</p>
+        <div class="res-link" style="color:var(--muted);">Coming Soon</div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;gap:0.75rem;align-items:center;transition:background 0.3s;">
+      <span style="font-size:1.2rem;">💡</span>
+      <p style="color:var(--muted);font-size:0.83rem;line-height:1.5;">
+        ECOSS uploads notes on the <strong style="color:var(--text)">same day</strong> as class. Missed a class? Check the Drive or ask in the <a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" style="color:var(--gold)">WhatsApp group</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUICK INFO -->
+  <section>
+    <div class="section-header">
+      <div class="section-tag">ℹ️ Info</div>
+      <h2 class="section-title">Quick Info</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-box"><h5>Active Semesters</h5><p><span>1st Sem</span> (2082) &amp; <span>3rd Sem</span> (2080)</p></div>
+      <div class="info-box"><h5>Section A Room</h5><p>Room <span>#116</span> · Odd Roll Nos.</p></div>
+      <div class="info-box"><h5>Section B Room</h5><p>Room <span>#3</span> · Even Roll Nos.</p></div>
+      <div class="info-box"><h5>Class Days</h5><p><span>Mon – Wed</span> (from next week)</p></div>
+      <div class="info-box"><h5>Department Head</h5><p>Prof. Dr. Ram Prasad Gyanwaly</p></div>
+      <div class="info-box"><h5>Contact ECOSS</h5><p><a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" style="color:var(--gold);text-decoration:none;">WhatsApp Group →</a></p></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="section-header">
+      <div class="section-tag">👥 ECOSS</div>
+      <h2 class="section-title">Our Team</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="avatar">S</div><h5>Sarishma Chaulagai</h5><p>President</p></div>
+      <div class="team-card"><div class="avatar">K</div><h5>Kapil Joshi</h5><p>Vice President</p></div>
+      <div class="team-card"><div class="avatar">P</div><h5>Prakriti Chaulagai</h5><p>Secretary</p></div>
+      <div class="team-card tbd"><div class="avatar">?</div><h5>Vice Secretary</h5><p>To Be Elected</p></div>
+      <div class="team-card"><div class="avatar">D</div><h5>Durga Ghimire</h5><p>Treasurer</p></div>
+      <div class="team-card"><div class="avatar">R</div><h5>Rijohn Shrestha</h5><p>Joint Secretary</p></div>
+      <div class="team-card"><div class="avatar">P</div><h5>Piyush Bohara</h5><p>Member</p></div>
+      <div class="team-card"><div class="avatar">B</div><h5>Beeja Bohara</h5><p>Member</p></div>
+      <div class="team-card"><div class="avatar">T</div><h5>Tek Prasad Regmi</h5><p>Member</p></div>
+      <div class="team-card"><div class="avatar">R</div><h5>Radha Kharel</h5><p>Member</p></div>
+      <div class="team-card"><div class="avatar">D</div><h5>Dinesh Pant</h5><p>Member</p></div>
+      <div class="team-card"><div class="avatar">S</div><h5>Sandeep Bhandari</h5><p>Member</p></div>
+    </div>
+  </section>
 
   <!-- ARCHIVE (your two events) -->
   <section id="archive">
