@@ -42,13 +42,13 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse
 /* NAV */
 nav{position:sticky;top:0;z-index:200;background:var(--nav);backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid var(--b1);padding:0 2rem;height:62px;display:flex;align-items:center;justify-content:space-between;transition:background .35s,border-color .35s}
 .nbrand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
-.nav-logo{height:38px;width:auto;flex-shrink:0}
+.nav-logo{height:48px;width:auto;flex-shrink:0}   /* ← Bigger logo (perfect fit inside header border) */
 .nlinks{display:flex;gap:.2rem;list-style:none}
 .nlinks a{color:var(--mu);text-decoration:none;font-size:.8rem;font-weight:500;padding:.35rem .7rem;border-radius:6px;transition:all .18s;letter-spacing:.3px}
 .nlinks a:hover{color:var(--cr);background:var(--cr-glow)}
 .nright{display:flex;align-items:center;gap:.6rem}
-.nwa{background:var(--cr);color:#fff;padding:.38rem .9rem;border-radius:7px;font-weight:600;font-size:.78rem;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 2px 8px var(--cr-glow)}
-.nwa:hover{transform:translateY(-1px);box-shadow:0 4px 14px var(--cr-glow)}
+.nwa{background:#25D366;color:#fff;padding:.38rem .9rem;border-radius:7px;font-weight:600;font-size:.78rem;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 2px 8px rgba(37,211,102,.3)}
+.nwa:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,.4)}
 .tbtn{width:34px;height:34px;border-radius:8px;background:var(--card);border:1px solid var(--b2);cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
 .tbtn:hover{border-color:var(--cr);transform:scale(1.08)}
 .hbtn{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:5px}
@@ -232,7 +232,8 @@ section{animation:fadeUp .65s .15s ease both}
   <div class="nright">
     <button class="tbtn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle light/dark theme">🌙</button>
     <a class="nwa" href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:6px"><path d="M12.04 2C6.58 2 2 6.59 2 12.05c0 2.1.65 4.05 1.78 5.65L2 22l4.36-1.14c1.55.85 3.3 1.33 5.1 1.33 5.46 0 9.9-4.59 9.9-10.05S17.5 2 12.04 2zm5.2 14.7c-.28.8-1.6 1.52-2.25 1.62-.57.1-1.3.14-2.1-.05-.9-.2-1.7-.6-2.4-1.1-.8-.6-1.4-1.3-1.8-2.1-.4-.8-.5-1.6-.4-2.4.1-.8.5-1.5 1-2 .5-.5 1.1-.8 1.7-.9.6-.1 1.2-.1 1.7.1.6.2 1.1.7 1.4 1.3.3.6.3 1.3.1 1.9-.2.6-.6 1.1-1.1 1.4-.5.3-1 .4-1.5.3-.5-.1-1-.4-1.3-.9-.3-.5-.3-1.1-.1-1.6.2-.5.6-1 1.1-1.2.5-.2 1-.2 1.4.1.4.3.7.8.7 1.3 0 .5-.2 1-.6 1.3-.4.3-.9.4-1.4.3-.5-.1-.9-.4-1.1-.9-.2-.5-.2-1-.1-1.5.1-.5.4-.9.9-1.1.5-.2 1-.2 1.4.1s.7.8.7 1.3c0 .5-.2.9-.6 1.2-.4.3-.8.4-1.3.3-.5-.1-.9-.4-1.1-.9z"/></svg>
+      <!-- Official WhatsApp logo SVG (exact match to the green bubble + phone icon) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" style="vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.485-.888-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.355L2 22l1.395-4.097A9.876 9.876 0 012 12.05C2 6.59 6.58 2 12.04 2c2.65 0 5.14 1.036 7.007 2.9 1.867 1.863 2.9 4.353 2.9 7.003 0 5.46-4.58 9.9-10.04 9.9z"/></svg>
       WhatsApp
     </a>
     <button class="hbtn" onclick="toggleMenu()" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
@@ -249,7 +250,8 @@ section{animation:fadeUp .65s .15s ease both}
   <a href="#feedback" onclick="toggleMenu()">Feedback</a>
   <a href="#team" onclick="toggleMenu()">Team</a>
   <a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:8px"><path d="M12.04 2C6.58 2 2 6.59 2 12.05c0 2.1.65 4.05 1.78 5.65L2 22l4.36-1.14c1.55.85 3.3 1.33 5.1 1.33 5.46 0 9.9-4.59 9.9-10.05S17.5 2 12.04 2zm5.2 14.7c-.28.8-1.6 1.52-2.25 1.62-.57.1-1.3.14-2.1-.05-.9-.2-1.7-.6-2.4-1.1-.8-.6-1.4-1.3-1.8-2.1-.4-.8-.5-1.6-.4-2.4.1-.8.5-1.5 1-2 .5-.5 1.1-.8 1.7-.9.6-.1 1.2-.1 1.7.1.6.2 1.1.7 1.4 1.3.3.6.3 1.3.1 1.9-.2.6-.6 1.1-1.1 1.4-.5.3-1 .4-1.5.3-.5-.1-1-.4-1.3-.9-.3-.5-.3-1.1-.1-1.6.2-.5.6-1 1.1-1.2.5-.2 1-.2 1.4.1.4.3.7.8.7 1.3 0 .5-.2 1-.6 1.3-.4.3-.9.4-1.4.3-.5-.1-.9-.4-1.1-.9-.2-.5-.2-1-.1-1.5.1-.5.4-.9.9-1.1.5-.2 1-.2 1.4.1s.7.8.7 1.3c0 .5-.2.9-.6 1.2-.4.3-.8.4-1.3.3-.5-.1-.9-.4-1.1-.9z"/></svg>
+    <!-- Same official WhatsApp SVG in mobile menu -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:8px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.485-.888-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.355L2 22l1.395-4.097A9.876 9.876 0 012 12.05C2 6.59 6.58 2 12.04 2c2.65 0 5.14 1.036 7.007 2.9 1.867 1.863 2.9 4.353 2.9 7.003 0 5.46-4.58 9.9-10.04 9.9z"/></svg>
     Join WhatsApp
   </a>
 </div>
@@ -484,7 +486,6 @@ section{animation:fadeUp .65s .15s ease both}
     </div>
   </section>
 
-
   <section id="team">
     <div class="sh">
       <span class="spill">👥 People</span>
@@ -572,7 +573,7 @@ section{animation:fadeUp .65s .15s ease both}
         <p class="fbast">Other Ways to Reach Us</p>
         <a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" target="_blank" class="fbalt">
           <span class="fbali">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2 6.59 2 12.05c0 2.1.65 4.05 1.78 5.65L2 22l4.36-1.14c1.55.85 3.3 1.33 5.1 1.33 5.46 0 9.9-4.59 9.9-10.05S17.5 2 12.04 2zm5.2 14.7c-.28.8-1.6 1.52-2.25 1.62-.57.1-1.3.14-2.1-.05-.9-.2-1.7-.6-2.4-1.1-.8-.6-1.4-1.3-1.8-2.1-.4-.8-.5-1.6-.4-2.4.1-.8.5-1.5 1-2 .5-.5 1.1-.8 1.7-.9.6-.1 1.2-.1 1.7.1.6.2 1.1.7 1.4 1.3.3.6.3 1.3.1 1.9-.2.6-.6 1.1-1.1 1.4-.5.3-1 .4-1.5.3-.5-.1-1-.4-1.3-.9-.3-.5-.3-1.1-.1-1.6.2-.5.6-1 1.1-1.2.5-.2 1-.2 1.4.1.4.3.7.8.7 1.3 0 .5-.2 1-.6 1.3-.4.3-.9.4-1.4.3-.5-.1-.9-.4-1.1-.9-.2-.5-.2-1-.1-1.5.1-.5.4-.9.9-1.1.5-.2 1-.2 1.4.1s.7.8.7 1.3c0 .5-.2.9-.6 1.2-.4.3-.8.4-1.3.3-.5-.1-.9-.4-1.1-.9z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.485-.888-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.355L2 22l1.395-4.097A9.876 9.876 0 012 12.05C2 6.59 6.58 2 12.04 2c2.65 0 5.14 1.036 7.007 2.9 1.867 1.863 2.9 4.353 2.9 7.003 0 5.46-4.58 9.9-10.04 9.9z"/></svg>
           </span>
           <div><strong>WhatsApp Group</strong><small>Fastest — post in the group</small></div>
         </a>
@@ -595,7 +596,7 @@ section{animation:fadeUp .65s .15s ease both}
   <p>Economics Students Society &nbsp;&middot;&nbsp; Central Department of Economics, Tribhuvan University, Kirtipur</p>
   <div class="flinks">
     <a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:4px"><path d="M12.04 2C6.58 2 2 6.59 2 12.05c0 2.1.65 4.05 1.78 5.65L2 22l4.36-1.14c1.55.85 3.3 1.33 5.1 1.33 5.46 0 9.9-4.59 9.9-10.05S17.5 2 12.04 2zm5.2 14.7c-.28.8-1.6 1.52-2.25 1.62-.57.1-1.3.14-2.1-.05-.9-.2-1.7-.6-2.4-1.1-.8-.6-1.4-1.3-1.8-2.1-.4-.8-.5-1.6-.4-2.4.1-.8.5-1.5 1-2 .5-.5 1.1-.8 1.7-.9.6-.1 1.2-.1 1.7.1.6.2 1.1.7 1.4 1.3.3.6.3 1.3.1 1.9-.2.6-.6 1.1-1.1 1.4-.5.3-1 .4-1.5.3-.5-.1-1-.4-1.3-.9-.3-.5-.3-1.1-.1-1.6.2-.5.6-1 1.1-1.2.5-.2 1-.2 1.4.1.4.3.7.8.7 1.3 0 .5-.2 1-.6 1.3-.4.3-.9.4-1.4.3-.5-.1-.9-.4-1.1-.9-.2-.5-.2-1-.1-1.5.1-.5.4-.9.9-1.1.5-.2 1-.2 1.4.1s.7.8.7 1.3c0 .5-.2.9-.6 1.2-.4.3-.8.4-1.3.3-.5-.1-.9-.4-1.1-.9z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366" style="vertical-align:middle;margin-right:4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.485-.888-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.355L2 22l1.395-4.097A9.876 9.876 0 012 12.05C2 6.59 6.58 2 12.04 2c2.65 0 5.14 1.036 7.007 2.9 1.867 1.863 2.9 4.353 2.9 7.003 0 5.46-4.58 9.9-10.04 9.9z"/></svg>
       WhatsApp Group
     </a>
     <a href="https://drive.google.com/drive/folders/1-729Gowt5KVHL1Wwcx17E-rPxDqZdfP7" target="_blank">📁 Master Drive</a>
