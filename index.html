@@ -10,37 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<!--
-  FEEDBACK SETUP — GOOGLE APPS SCRIPT
-  ====================================
-  To make feedback go directly to your Google Doc:
-
-  1. Go to https://script.google.com → New Project
-  2. Paste this code (replace existing content):
-
-  const DOC_ID = "18nZgGEW99x1t2ht9H6gCdG-geGTdvtdxty0bMBuDkjg";
-  function doPost(e) {
-    try {
-      const data = JSON.parse(e.postData.contents);
-      const doc = DocumentApp.openById(DOC_ID);
-      const body = doc.getBody();
-      const now = new Date().toLocaleString("en-NP",{timeZone:"Asia/Kathmandu"});
-      body.appendHorizontalRule();
-      body.appendParagraph("Feedback — " + now).setHeading(DocumentApp.ParagraphHeading.HEADING3);
-      body.appendParagraph("Name: " + (data.name || "Anonymous"));
-      body.appendParagraph("Category: " + (data.category || "—"));
-      body.appendParagraph("Message: " + data.message);
-      doc.saveAndClose();
-      return ContentService.createTextOutput(JSON.stringify({status:"ok"})).setMimeType(ContentService.MimeType.JSON);
-    } catch(err) {
-      return ContentService.createTextOutput(JSON.stringify({status:"error"})).setMimeType(ContentService.MimeType.JSON);
-    }
-  }
-
-  3. Deploy → New deployment → Web app
-     Execute as: Me | Who has access: Anyone
-  4. Copy the URL and paste it below as APPS_SCRIPT_URL
--->
 
 <style>
 [data-theme="dark"]{
@@ -522,20 +491,6 @@ section{animation:fadeUp .65s .15s ease both}
     </div>
   </section>
 
-  <section>
-    <div class="sh">
-      <span class="spill">ℹ️ Info</span>
-      <h2 class="stitle">Quick Info</h2>
-    </div>
-    <div class="ig">
-      <div class="ib"><h6>Active Semesters</h6><p><span>1st Sem</span> (2082) &amp; <span>3rd Sem</span> (2080)</p></div>
-      <div class="ib"><h6>Section A Room</h6><p>Room <span>#116</span> &middot; Odd Roll Nos.</p></div>
-      <div class="ib"><h6>Section B Room</h6><p>Room <span>#3</span> &middot; Even Roll Nos.</p></div>
-      <div class="ib"><h6>Class Days</h6><p><span>Mon &ndash; Wed</span> (from next week)</p></div>
-      <div class="ib"><h6>Department Head</h6><p>Prof. Dr. Ram Prasad Gyanwaly</p></div>
-      <div class="ib"><h6>Contact ECOSS</h6><p><a href="https://chat.whatsapp.com/IIxLkvRjgZy77HrtHRUHPj?mode=gi_t" style="color:var(--cr);text-decoration:none;">WhatsApp Group &rarr;</a></p></div>
-    </div>
-  </section>
 
   <section id="team">
     <div class="sh">
