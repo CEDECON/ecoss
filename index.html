@@ -39,7 +39,14 @@
                             gold: '#C5A059',
                             darkBg: '#0f172a',
                             darkCard: '#1e293b'
-                        }
+                        }.hero-bg {
+            background-color: #1e293b;
+            /* Added ./ to force the browser to look in the current directory */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), url('./tu-aerial.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
