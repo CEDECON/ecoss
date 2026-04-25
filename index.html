@@ -2,12 +2,21 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ECOSS | Economics Students' Society, TU</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -15,10 +24,10 @@
                 extend: {
                     colors: {
                         tu: {
-                            maroon: '#8A1538', /* TU Prestige Maroon */
+                            maroon: '#8A1538',
                             maroonDark: '#660f29',
-                            gold: '#C5A059', /* TU Gold */
-                            darkBg: '#0f172a', /* Deep navy/slate for dark mode */
+                            gold: '#C5A059',
+                            darkBg: '#0f172a',
                             darkCard: '#1e293b'
                         }
                     },
@@ -32,258 +41,225 @@
     </script>
     
     <style>
+        /* Fix for Horizontal Scroll */
+        body { overflow-x: hidden; width: 100%; position: relative; }
+        
+        /* Fixed Background Scaling */
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('./TU aerial shot.jpg');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.8)), url('./TU aerial shot.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
+        
         .bento-card {
-            @apply bg-white dark:bg-tu-darkCard rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden;
+            @apply bg-white dark:bg-tu-darkCard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 transition-all duration-300 hover:shadow-xl;
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 dark:bg-tu-darkBg dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-tu-darkBg dark:text-gray-200">
 
-    <div id="urgentNotice" class="bg-tu-maroon text-white px-4 py-3 flex justify-between items-center z-50 relative animate-pulse hover:animate-none cursor-pointer" onclick="this.style.display='none'">
-        <div class="max-w-7xl mx-auto w-full flex justify-center items-center text-sm font-medium">
-            <span class="bg-tu-gold text-tu-maroonDark px-2 py-1 rounded text-xs font-bold mr-3">NEW NOTIFICATION</span>
-            ECOSS General Meeting Minutes from yesterday have been published. 
-            <a href="#archive" class="underline ml-2 hover:text-tu-gold">View in Archive &rarr;</a>
+    <div id="urgentNotice" class="bg-tu-maroon text-white px-4 py-3 flex justify-between items-center z-50 sticky top-0 border-b border-tu-gold/30">
+        <div class="max-w-7xl mx-auto w-full flex justify-center items-center text-xs md:text-sm font-medium">
+            <span class="hidden md:inline-block bg-tu-gold text-tu-maroonDark px-2 py-0.5 rounded font-bold mr-3 uppercase text-[10px]">Notice</span>
+            Meeting Minutes Published (48hr Policy). <a href="#archive" class="underline ml-2 hover:text-tu-gold">View Archive</a>
         </div>
-        <button class="text-white hover:text-tu-gold">&times;</button>
+        <button onclick="this.parentElement.style.display='none'" class="text-white p-1">&times;</button>
     </div>
 
-    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-tu-darkBg/80 border-b border-gray-200 dark:border-gray-800 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <img class="h-12 w-auto" src="./ECOSS logo.png" alt="ECOSS Logo">
-                    <div class="hidden sm:block">
-                        <h1 class="font-serif font-bold text-xl leading-tight text-tu-maroon dark:text-white">ECOSS</h1>
-                        <p class="text-[10px] uppercase tracking-wider font-semibold text-tu-gold">Tribhuvan University</p>
-                    </div>
-                </div>
-
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Home</a>
-                    <a href="#resources" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Resources</a>
-                    <a href="#archive" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Archive</a>
-                    <a href="#team" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Team</a>
-                    
-                    <button id="themeToggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                        <span id="sunIcon" class="hidden dark:block text-yellow-400">☀️</span>
-                        <span id="moonIcon" class="block dark:hidden text-gray-600">🌙</span>
-                    </button>
-                </div>
-
-                <div class="md:hidden flex items-center gap-4">
-                    <button id="themeToggleMobile" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800">
-                        <span id="sunIconMob" class="hidden dark:block">☀️</span>
-                        <span id="moonIconMob" class="block dark:hidden">🌙</span>
-                    </button>
-                    <button id="mobileMenuBtn" class="text-gray-600 dark:text-gray-300 hover:text-tu-maroon focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
+    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/90 dark:bg-tu-darkBg/90 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img class="h-10 w-auto" src="./ECOSS logo.png" alt="Logo">
+                <div>
+                    <h1 class="font-serif font-bold text-lg text-tu-maroon dark:text-white leading-none">ECOSS</h1>
+                    <p class="text-[8px] uppercase tracking-tighter text-tu-gold font-bold">Tribhuvan University</p>
                 </div>
             </div>
-        </div>
 
-        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-tu-darkBg border-b border-gray-200 dark:border-gray-800 px-4 pt-2 pb-4 space-y-1">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
-            <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">Resources</a>
-            <a href="#archive" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">Archive</a>
-            <a href="#team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">Team</a>
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="#" class="hover:text-tu-maroon dark:hover:text-tu-gold transition">Home</a>
+                <a href="#resources" class="hover:text-tu-maroon dark:hover:text-tu-gold transition">Resources</a>
+                <a href="#archive" class="hover:text-tu-maroon dark:hover:text-tu-gold transition">Archive</a>
+                <a href="#team" class="hover:text-tu-maroon dark:hover:text-tu-gold transition">Team</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 transition">
+                    <span id="theme-toggle-dark-icon" class="hidden">🌙</span>
+                    <span id="theme-toggle-light-icon" class="hidden">☀️</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button id="theme-toggle-mobile" class="p-2 text-lg">🌙</button>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-600 dark:text-white">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-tu-darkBg border-b border-gray-200 dark:border-gray-800 px-6 py-4 space-y-4 shadow-xl">
+            <a href="#" class="block text-lg font-medium">Home</a>
+            <a href="#resources" class="block text-lg font-medium">Resources</a>
+            <a href="#archive" class="block text-lg font-medium">Archive</a>
+            <a href="#team" class="block text-lg font-medium">Team</a>
         </div>
     </nav>
 
-    <header class="hero-bg h-[70vh] min-h-[500px] flex items-center justify-center text-center px-4">
-        <div class="max-w-4xl mx-auto z-10 text-white transform transition-all duration-700 translate-y-0 opacity-100">
-            <span class="text-tu-gold font-bold tracking-widest uppercase text-sm mb-4 block">Official Digital Hub</span>
-            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Advancing Economic Excellence at Tribhuvan University</h1>
-            <p class="text-lg md:text-xl font-light mb-10 text-gray-200 max-w-2xl mx-auto">Connecting students, facilitating research, and maintaining transparent society governance for the MA Economics cohort.</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#resources" class="bg-tu-maroon hover:bg-tu-maroonDark text-white font-medium py-3 px-8 rounded-full transition shadow-lg shadow-tu-maroon/30">
-                    Access Resource Vault
-                </a>
-                <a href="#archive" class="bg-transparent border border-white hover:bg-white hover:text-tu-darkBg text-white font-medium py-3 px-8 rounded-full transition">
-                    View Meeting Minutes
-                </a>
+    <header class="hero-bg h-[60vh] flex items-center justify-center text-center px-6 relative overflow-hidden">
+        <div class="max-w-3xl z-10 text-white">
+            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4 drop-shadow-lg">Advancing Economic Excellence</h2>
+            <p class="text-sm md:text-lg mb-8 text-gray-200 font-light">Central Department of Economics, Tribhuvan University</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="#resources" class="bg-tu-maroon hover:bg-tu-maroonDark text-white px-8 py-3 rounded-full text-sm font-semibold transition">Resource Vault</a>
+                <a href="#archive" class="bg-white/10 backdrop-blur-sm border border-white/30 px-8 py-3 rounded-full text-sm font-semibold hover:bg-white/20 transition">Meeting Minutes</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-20 relative z-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <main class="max-w-7xl mx-auto px-4 py-12 -mt-16 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             
-            <div class="bento-card md:col-span-2 flex flex-col justify-between group">
-                <div class="absolute -right-10 -top-10 opacity-5 dark:opacity-10 transition-transform group-hover:scale-110">
-                    <img src="./TU logo.png" alt="TU Background" class="w-64 h-64">
-                </div>
-                <div>
-                    <h2 class="text-2xl font-serif font-bold text-tu-maroon dark:text-white mb-3">Our Vision</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                        To foster a collaborative academic environment where economics students thrive. We are dedicated to providing immediate access to academic resources, ensuring 100% transparency in committee operations, and elevating the standard of student life at Kirtipur.
-                    </p>
-                </div>
-                <div class="mt-4 border-t border-gray-100 dark:border-gray-800 pt-4 flex gap-4">
-                    <div class="text-sm"><span class="font-bold text-tu-maroon dark:text-tu-gold">100+</span> Active Members</div>
-                    <div class="text-sm"><span class="font-bold text-tu-maroon dark:text-tu-gold">48hr</span> Minutes Policy</div>
-                </div>
+            <div class="bento-card md:col-span-2">
+                <h3 class="text-xl font-serif font-bold text-tu-maroon dark:text-white mb-2">Our Vision</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Fostering a transparent, resource-rich academic ecosystem for the MA Economics cohort. We bridge the gap between students and materials.
+                </p>
             </div>
 
-            <div class="bento-card bg-tu-maroon dark:bg-tu-maroonDark text-white border-none group">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-serif font-bold">Latest Notice</h2>
-                    <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tu-gold opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-tu-gold"></span>
-                    </span>
+            <div class="bento-card bg-tu-maroon dark:bg-tu-maroonDark text-white border-none">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-tu-gold">Live Alert</span>
+                    <span class="h-2 w-2 rounded-full bg-tu-gold animate-pulse"></span>
                 </div>
-                <h3 class="font-medium text-lg mb-2 group-hover:text-tu-gold transition-colors">Guest Lecture: Nepal's Macroeconomic Outlook</h3>
-                <p class="text-sm text-gray-200 mb-4">Scheduled for next Friday at CEDECON Hall. Attendance is highly recommended for Sem 3.</p>
-                <button class="text-sm font-semibold uppercase tracking-wide flex items-center hover:text-tu-gold transition-colors">
-                    Read Full Notice <span class="ml-1">&rarr;</span>
-                </button>
+                <h4 class="font-bold text-sm mb-1">Sem 3 Exam Schedule</h4>
+                <p class="text-[11px] text-gray-300">The tentative schedule for Sem 3 specialization papers has been posted in the department.</p>
             </div>
 
-            <div id="resources" class="bento-card md:col-span-2">
-                <h2 class="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-2">The Resource Vault</h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Access Google Drive repositories containing curated class notes, books, and reference materials.</p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="#" class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-tu-maroon dark:hover:border-tu-gold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all group">
-                        <div class="h-10 w-10 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-4 group-hover:scale-110 transition-transform">
-                            📁
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 dark:text-gray-100">Semester 1</h3>
-                            <p class="text-xs text-gray-500">Micro, Macro, Math & Stats</p>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-tu-maroon dark:hover:border-tu-gold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all group">
-                        <div class="h-10 w-10 rounded bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mr-4 group-hover:scale-110 transition-transform">
-                            📁
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 dark:text-gray-100">Semester 3</h3>
-                            <p class="text-xs text-gray-500">Specialization Papers</p>
-                        </div>
-                    </a>
+            <div id="resources" class="bento-card md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="col-span-full border-b border-gray-100 dark:border-gray-800 pb-2 mb-2">
+                    <h3 class="text-lg font-bold">Academic Resources</h3>
                 </div>
+                <a href="#" class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 flex items-center gap-4 hover:scale-[1.02] transition">
+                    <span class="text-2xl">📘</span>
+                    <div>
+                        <p class="font-bold text-xs uppercase text-tu-maroon dark:text-tu-gold">Semester 1</p>
+                        <p class="text-[10px] text-gray-500">Core Resources</p>
+                    </div>
+                </a>
+                <a href="#" class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 flex items-center gap-4 hover:scale-[1.02] transition">
+                    <span class="text-2xl">📗</span>
+                    <div>
+                        <p class="font-bold text-xs uppercase text-tu-maroon dark:text-tu-gold">Semester 3</p>
+                        <p class="text-[10px] text-gray-500">Specialization</p>
+                    </div>
+                </a>
             </div>
 
             <div id="archive" class="bento-card">
-                <h2 class="text-xl font-serif font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    Transparency Archive 📄
-                </h2>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">
-                    As promised to students, all meeting minutes are published here within 48 hours.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex justify-between items-center group cursor-pointer">
-                        <div>
-                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-tu-maroon dark:group-hover:text-tu-gold transition-colors">Exec Meeting Minutes</p>
-                            <p class="text-[10px] text-gray-500">April 23, 2026</p>
-                        </div>
-                        <span class="text-gray-400 group-hover:text-tu-maroon">&darr;</span>
-                    </li>
-                    <li class="flex justify-between items-center group cursor-pointer">
-                        <div>
-                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-tu-maroon dark:group-hover:text-tu-gold transition-colors">Event Budget Report</p>
-                            <p class="text-[10px] text-gray-500">April 10, 2026</p>
-                        </div>
-                        <span class="text-gray-400 group-hover:text-tu-maroon">&darr;</span>
-                    </li>
-                    <li class="flex justify-between items-center group cursor-pointer">
-                        <div>
-                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-tu-maroon dark:group-hover:text-tu-gold transition-colors">Past Exam Questions</p>
-                            <p class="text-[10px] text-gray-500">2023-2025 Batch</p>
-                        </div>
-                        <span class="text-gray-400 group-hover:text-tu-maroon">&darr;</span>
-                    </li>
-                </ul>
+                <h3 class="text-lg font-bold mb-4">Minutes Archive</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-xs">
+                        <span>Meeting #24 (General)</span>
+                        <span class="text-tu-maroon dark:text-tu-gold font-bold">PDF &rarr;</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs">
+                        <span>Meeting #23 (Internal)</span>
+                        <span class="text-tu-maroon dark:text-tu-gold font-bold">PDF &rarr;</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <section id="team" class="py-16 bg-white dark:bg-tu-darkBg border-t border-gray-100 dark:border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8">Committee Leadership</h2>
-            <div class="flex justify-center gap-8 flex-wrap">
-                <div class="text-center group">
-                    <div class="w-24 h-24 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto mb-3 overflow-hidden border-2 border-transparent group-hover:border-tu-maroon transition-all">
-                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-3xl">👤</div>
-                    </div>
-                    <h3 class="font-bold text-gray-900 dark:text-white">President Name</h3>
-                    <p class="text-xs text-tu-maroon dark:text-tu-gold uppercase tracking-wider">President</p>
-                </div>
-                
-                <div class="text-center group">
-                    <div class="w-24 h-24 rounded-full bg-gray-200 dark:bg-gray-700 mx-auto mb-3 overflow-hidden border-2 border-transparent group-hover:border-tu-maroon transition-all">
-                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-3xl">👤</div>
-                    </div>
-                    <h3 class="font-bold text-gray-900 dark:text-white">Piyush Bohara</h3>
-                    <p class="text-xs text-tu-maroon dark:text-tu-gold uppercase tracking-wider">Executive Member</p>
-                </div>
+    <section id="team" class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif font-bold text-tu-maroon dark:text-white">Executive Committee</h2>
+            <p class="text-sm text-gray-500 mt-2">Serving the 2025-2027 Academic Tenure</p>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Full Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase">President</p>
             </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Full Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase">Vice President</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Full Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase">Gen. Secretary</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Full Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase">Secretary</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Full Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase">Treasurer</p>
+            </div>
+
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon transition">👤</div>
+                <h4 class="font-bold text-sm">Piyush Bohara</h4>
+                <p class="text-[10px] text-gray-500 uppercase">Executive Member</p>
+            </div>
+            <div class="text-center group"><div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-xl text-gray-400">👤</div><h4 class="font-bold text-sm italic">Member Name</h4></div>
+            <div class="text-center group"><div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-xl text-gray-400">👤</div><h4 class="font-bold text-sm italic">Member Name</h4></div>
+            <div class="text-center group"><div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-xl text-gray-400">👤</div><h4 class="font-bold text-sm italic">Member Name</h4></div>
+            <div class="text-center group"><div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-xl text-gray-400">👤</div><h4 class="font-bold text-sm italic">Member Name</h4></div>
+            <div class="text-center group"><div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-xl text-gray-400">👤</div><h4 class="font-bold text-sm italic">Member Name</h4></div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-300 py-12 border-t-4 border-tu-maroon">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-4">
-                <img src="./ECOSS logo.png" alt="ECOSS" class="h-10 opacity-80 grayscale hover:grayscale-0 transition-all">
-                <div>
-                    <h4 class="font-serif font-bold text-white">ECOSS TU</h4>
-                    <p class="text-xs text-gray-500">Central Department of Economics, Kirtipur</p>
-                </div>
+    <footer class="bg-slate-950 text-gray-400 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <img src="./ECOSS logo.png" class="h-10 mb-4 mx-auto md:mx-0 opacity-70">
+                <p class="text-xs max-w-xs">Connecting the next generation of economists at Tribhuvan University, Nepal.</p>
             </div>
-            
             <div class="text-center md:text-right">
-                <p class="text-sm mb-1">&copy; 2026 Economics Students' Society. All rights reserved.</p>
-                <p class="text-xs font-medium text-gray-400 bg-gray-800 inline-block px-3 py-1 rounded border border-gray-700">
-                    Created and managed by <span class="text-white">Piyush Bohara</span>, ECOSS member
-                </p>
+                <p class="text-sm font-medium text-white mb-2">Built & Managed by Piyush Bohara</p>
+                <p class="text-[10px] text-gray-600">ECOSS Executive Body &copy; 2026</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- Dark Mode Logic ---
-        const html = document.documentElement;
-        const themeToggles = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')];
-        const sunIcons = [document.getElementById('sunIcon'), document.getElementById('sunIconMob')];
-        const moonIcons = [document.getElementById('moonIcon'), document.getElementById('moonIconMob')];
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-        // Check local storage or system preference
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        }
-
-        function toggleTheme() {
-            html.classList.toggle('dark');
-            if (html.classList.contains('dark')) {
-                localStorage.theme = 'dark';
+        function updateIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+                themeToggleMobile.innerHTML = "☀️";
             } else {
-                localStorage.theme = 'light';
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+                themeToggleMobile.innerHTML = "🌙";
             }
         }
 
-        themeToggles.forEach(btn => btn?.addEventListener('click', toggleTheme));
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+            updateIcons();
+        }
 
-        // --- Mobile Menu Logic ---
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+        updateIcons(); // Init icons on load
     </script>
 </body>
 </html>
