@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ECOSS | Economics Students' Society, TU</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -49,96 +51,260 @@
     </script>
     
     <style>
+        /* Core Fixes */
         body { overflow-x: hidden; width: 100%; }
         
-        /* Fixed Background Scaling with Fallback Color */
+        /* Hero Background with Fallback Color and updated tu-aerial.jpg path */
         .hero-bg {
-            background-color: #1e293b; /* Fallback if image fails */
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), 
-                              url('TU%20aerial%20shot.jpg'); /* Standardized space encoding */
+            background-color: #1e293b;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), url('tu-aerial.jpg');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
         }
         
+        /* Bento Card Component */
         .bento-card {
-            @apply bg-white dark:bg-tu-darkCard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 transition-all duration-300;
+            @apply bg-white dark:bg-tu-darkCard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 transition-all duration-300 shadow-sm hover:shadow-lg;
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 dark:bg-tu-darkBg dark:text-gray-200">
+<body class="font-sans text-gray-800 bg-gray-50 dark:bg-tu-darkBg dark:text-gray-200 transition-colors duration-300">
 
-    <div id="urgentNotice" class="bg-tu-maroon text-white px-4 py-3 z-50 sticky top-0">
+    <div id="urgentNotice" class="bg-tu-maroon text-white px-4 py-3 z-50 sticky top-0 shadow-md">
         <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] md:text-sm font-medium">
-            <p>Meeting Minutes Published (48hr Policy). <a href="#archive" class="underline hover:text-tu-gold ml-1">View Archive</a></p>
-            <button onclick="this.parentElement.parentElement.style.display='none'" class="text-white text-xl ml-4">&times;</button>
+            <p>
+                <span class="bg-tu-gold text-tu-maroonDark px-2 py-0.5 rounded font-bold mr-2 uppercase text-[10px] hidden sm:inline-block">Alert</span>
+                Meeting Minutes Published (48hr Policy). <a href="#archive" class="underline hover:text-tu-gold ml-1 transition-colors">View Archive</a>
+            </p>
+            <button onclick="document.getElementById('urgentNotice').style.display='none'" class="text-white text-xl ml-4 hover:text-tu-gold transition-colors" aria-label="Close Notice">&times;</button>
         </div>
     </div>
 
-    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/90 dark:bg-tu-darkBg/90 border-b border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img class="h-10 w-auto" src="ECOSS%20logo.png" alt="Logo">
-                <span class="font-serif font-bold text-lg text-tu-maroon dark:text-white">ECOSS</span>
+    <nav class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-tu-darkBg/90 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            
+            <div class="flex items-center gap-3">
+                <img class="h-10 w-auto" src="ECOSS logo.png" alt="ECOSS Logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjOEExNTM4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RUNPU1M8L3RleHQ+PC9zdmc+'">
+                <div class="leading-none">
+                    <span class="font-serif font-bold text-lg md:text-xl text-tu-maroon dark:text-white">ECOSS</span>
+                    <p class="text-[8px] md:text-[9px] uppercase tracking-wider text-tu-gold font-bold">Tribhuvan University</p>
+                </div>
             </div>
 
-            <div class="flex items-center gap-4">
-                <div class="hidden md:flex space-x-6 mr-4 text-sm font-medium">
-                    <a href="#" class="hover:text-tu-maroon dark:hover:text-tu-gold">Home</a>
-                    <a href="#resources" class="hover:text-tu-maroon dark:hover:text-tu-gold">Resources</a>
-                    <a href="#team" class="hover:text-tu-maroon dark:hover:text-tu-gold">Team</a>
+            <div class="hidden md:flex items-center gap-6">
+                <div class="flex space-x-6 mr-2 text-sm font-medium">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Home</a>
+                    <a href="#resources" class="text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Resources</a>
+                    <a href="#archive" class="text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Archive</a>
+                    <a href="#team" class="text-gray-700 dark:text-gray-300 hover:text-tu-maroon dark:hover:text-tu-gold transition-colors">Team</a>
                 </div>
-                <button id="theme-global" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-xl border border-gray-200 dark:border-gray-700">
+                
+                <button id="theme-global" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-lg border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform" aria-label="Toggle Theme">
                     <span class="dark:hidden">🌙</span>
                     <span class="hidden dark:inline">☀️</span>
                 </button>
             </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button id="theme-mobile" class="p-2 text-lg rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                    <span class="dark:hidden">🌙</span>
+                    <span class="hidden dark:inline">☀️</span>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-300 p-1">
+                    <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-tu-darkBg border-b border-gray-200 dark:border-gray-800 px-6 py-4 space-y-4 shadow-xl absolute w-full left-0 transition-colors duration-300">
+            <a href="#" class="block text-base font-medium text-gray-800 dark:text-gray-200 hover:text-tu-maroon dark:hover:text-tu-gold">Home</a>
+            <a href="#resources" class="block text-base font-medium text-gray-800 dark:text-gray-200 hover:text-tu-maroon dark:hover:text-tu-gold">Resources</a>
+            <a href="#archive" class="block text-base font-medium text-gray-800 dark:text-gray-200 hover:text-tu-maroon dark:hover:text-tu-gold">Archive</a>
+            <a href="#team" class="block text-base font-medium text-gray-800 dark:text-gray-200 hover:text-tu-maroon dark:hover:text-tu-gold">Team</a>
         </div>
     </nav>
 
-    <header class="hero-bg h-[55vh] flex items-center justify-center text-center px-6 relative">
-        <div class="max-w-3xl z-10 text-white">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">Advancing Economic Excellence</h2>
-            <p class="text-xs md:text-base text-gray-300 font-light tracking-wide">CENTRAL DEPARTMENT OF ECONOMICS, TRIBHUVAN UNIVERSITY</p>
+    <header class="hero-bg h-[55vh] min-h-[400px] flex items-center justify-center text-center px-4 relative">
+        <div class="max-w-3xl z-10 text-white transform transition-all duration-700 translate-y-0 opacity-100">
+            <h2 class="text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 md:mb-6 drop-shadow-md">Advancing Economic Excellence</h2>
+            <p class="text-xs md:text-sm lg:text-base text-gray-200 font-light tracking-widest uppercase mb-8 drop-shadow">Central Department of Economics, Tribhuvan University</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#resources" class="bg-tu-maroon hover:bg-tu-maroonDark text-white px-8 py-3 rounded-full text-sm font-semibold transition-colors shadow-lg">Access Resource Vault</a>
+                <a href="#archive" class="bg-transparent backdrop-blur-sm border border-white/50 px-8 py-3 rounded-full text-sm font-semibold hover:bg-white hover:text-tu-darkBg transition-colors">View Meeting Minutes</a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 -mt-12 relative z-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <main class="max-w-7xl mx-auto px-4 py-12 -mt-10 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            <div class="bento-card md:col-span-2 shadow-lg">
-                <h3 class="text-xl font-serif font-bold text-tu-maroon dark:text-white mb-2">Institutional Vision</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Providing the resources and transparency needed for academic success at Kirtipur.</p>
+            <div class="bento-card lg:col-span-2 relative overflow-hidden group">
+                <div class="absolute -right-8 -top-8 opacity-5 dark:opacity-10 transition-transform group-hover:scale-110 duration-500 pointer-events-none">
+                    <img src="TU logo.png" alt="" class="w-48 h-48" onerror="this.style.display='none'">
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-tu-maroon dark:text-white mb-3">Institutional Vision</h3>
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                    Fostering a collaborative and transparent academic ecosystem for the MA Economics cohort. We bridge the gap between students and materials, providing immediate access to academic resources and ensuring consistent governance transparency.
+                </p>
             </div>
 
-            <div id="resources" class="bento-card shadow-lg bg-white dark:bg-tu-darkCard">
-                <h3 class="font-bold mb-3 border-b pb-2 text-tu-maroon dark:text-tu-gold">Quick Resources</h3>
-                <div class="space-y-3">
-                    <a href="#" class="block text-sm p-2 bg-gray-50 dark:bg-gray-800 rounded hover:bg-tu-gold/10 transition">📂 Semester 1 Notes</a>
-                    <a href="#" class="block text-sm p-2 bg-gray-50 dark:bg-gray-800 rounded hover:bg-tu-gold/10 transition">📂 Semester 3 Notes</a>
+            <div class="bento-card bg-tu-maroon dark:bg-tu-maroonDark text-white border-none relative overflow-hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-tu-gold bg-black/20 px-2 py-1 rounded">Live Alert</span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-tu-gold animate-pulse shadow-[0_0_8px_rgba(197,160,89,0.8)]"></span>
                 </div>
+                <h4 class="font-bold text-base mb-2 group-hover:text-tu-gold transition-colors">Sem 3 Exam Schedule</h4>
+                <p class="text-xs text-gray-200 mb-4 opacity-90">The tentative schedule for Semester 3 specialization papers has been posted in the department notice board.</p>
+                <a href="#" class="text-xs font-semibold uppercase tracking-wider flex items-center hover:text-tu-gold transition-colors w-max">
+                    Read Full Notice <span class="ml-1 text-lg leading-none">&rarr;</span>
+                </a>
+            </div>
+
+            <div id="resources" class="bento-card lg:col-span-2">
+                <div class="border-b border-gray-100 dark:border-gray-800 pb-3 mb-4 flex items-center justify-between">
+                    <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white">Academic Resources</h3>
+                    <span class="text-xs text-gray-500">G-Drive Integration</span>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="#" class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 flex items-start gap-4 hover:-translate-y-1 hover:shadow-md transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                        <div class="text-3xl bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm">📘</div>
+                        <div>
+                            <p class="font-bold text-sm text-tu-maroon dark:text-tu-gold mb-1">Semester 1 Notes</p>
+                            <p class="text-[11px] text-gray-500 dark:text-gray-400">Micro, Macro, Math & Stats compiled resources.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 flex items-start gap-4 hover:-translate-y-1 hover:shadow-md transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                        <div class="text-3xl bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm">📗</div>
+                        <div>
+                            <p class="font-bold text-sm text-tu-maroon dark:text-tu-gold mb-1">Semester 3 Notes</p>
+                            <p class="text-[11px] text-gray-500 dark:text-gray-400">Specialization papers and reference materials.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div id="archive" class="bento-card flex flex-col">
+                <div class="border-b border-gray-100 dark:border-gray-800 pb-3 mb-4">
+                    <h3 class="text-xl font-serif font-bold text-gray-900 dark:text-white">Minutes Archive</h3>
+                    <p class="text-[10px] text-gray-500 mt-1">100% Transparency Guarantee</p>
+                </div>
+                <div class="space-y-3 flex-grow">
+                    <a href="#" class="flex justify-between items-center text-sm p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+                        <span class="text-gray-700 dark:text-gray-300 font-medium">Meeting #24 (General)</span>
+                        <span class="text-tu-maroon dark:text-tu-gold text-xs font-bold group-hover:translate-x-1 transition-transform">PDF &rarr;</span>
+                    </a>
+                    <a href="#" class="flex justify-between items-center text-sm p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+                        <span class="text-gray-700 dark:text-gray-300 font-medium">Meeting #23 (Internal)</span>
+                        <span class="text-tu-maroon dark:text-tu-gold text-xs font-bold group-hover:translate-x-1 transition-transform">PDF &rarr;</span>
+                    </a>
+                    <a href="#" class="flex justify-between items-center text-sm p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+                        <span class="text-gray-700 dark:text-gray-300 font-medium">Event Budget Report</span>
+                        <span class="text-tu-maroon dark:text-tu-gold text-xs font-bold group-hover:translate-x-1 transition-transform">PDF &rarr;</span>
+                    </a>
+                </div>
+                <a href="#" class="text-center text-xs font-medium text-gray-500 hover:text-tu-maroon dark:hover:text-tu-gold mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 transition-colors">View All Archives</a>
             </div>
         </div>
     </main>
 
-    <section id="team" class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-serif font-bold text-center mb-10">Committee Leadership</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="p-4">
-                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">👤</div>
-                <p class="font-bold text-sm text-gray-900 dark:text-white leading-tight">Piyush Bohara</p>
-                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold">EXECUTIVE MEMBER</p>
+    <section id="team" class="max-w-7xl mx-auto px-4 py-16 mb-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">Executive Committee</h2>
+            <div class="h-1 w-16 bg-tu-maroon dark:bg-tu-gold mx-auto rounded"></div>
+            <p class="text-sm text-gray-500 mt-4">Serving the 2025-2027 Academic Tenure</p>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-10 gap-x-4 mb-12">
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon ring-offset-2 dark:ring-offset-tu-darkBg transition-all shadow-sm">👤</div>
+                <h4 class="font-bold text-sm text-gray-900 dark:text-gray-100">President Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase tracking-wider mt-1">President</p>
             </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon ring-offset-2 dark:ring-offset-tu-darkBg transition-all shadow-sm">👤</div>
+                <h4 class="font-bold text-sm text-gray-900 dark:text-gray-100">VP Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase tracking-wider mt-1">Vice President</p>
             </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon ring-offset-2 dark:ring-offset-tu-darkBg transition-all shadow-sm">👤</div>
+                <h4 class="font-bold text-sm text-gray-900 dark:text-gray-100">Gen Sec Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase tracking-wider mt-1">Gen. Secretary</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon ring-offset-2 dark:ring-offset-tu-darkBg transition-all shadow-sm">👤</div>
+                <h4 class="font-bold text-sm text-gray-900 dark:text-gray-100">Secretary Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase tracking-wider mt-1">Secretary</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl group-hover:ring-2 ring-tu-maroon ring-offset-2 dark:ring-offset-tu-darkBg transition-all shadow-sm">👤</div>
+                <h4 class="font-bold text-sm text-gray-900 dark:text-gray-100">Treasurer Name</h4>
+                <p class="text-[10px] text-tu-maroon dark:text-tu-gold font-bold uppercase tracking-wider mt-1">Treasurer</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-8 gap-x-4">
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Piyush Bohara</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Member Name</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Member Name</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Member Name</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Member Name</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-full mx-auto mb-2 flex items-center justify-center text-xl group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">👤</div>
+                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-200">Member Name</h4>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Exec. Member</p>
+            </div>
+        </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-500 py-10 text-center px-4 border-t-2 border-tu-maroon">
-        <p class="text-sm font-medium text-white mb-1">Created & Managed by Piyush Bohara</p>
-        <p class="text-[10px]">ECOSS | Tribhuvan University &copy; 2026</p>
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6 border-t-4 border-tu-maroon relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-3 mb-3 opacity-80 hover:opacity-100 transition-opacity">
+                    <img src="ECOSS logo.png" alt="ECOSS" class="h-8 grayscale hover:grayscale-0 transition-all" onerror="this.style.display='none'">
+                    <span class="font-serif font-bold text-white text-lg">ECOSS</span>
+                </div>
+                <p class="text-xs max-w-xs leading-relaxed">Economics Students' Society<br>Central Department of Economics, Kirtipur<br>Tribhuvan University, Nepal</p>
+            </div>
+            
+            <div class="text-center md:text-right">
+                <div class="bg-gray-800/50 border border-gray-700/50 px-4 py-2 rounded-lg inline-block mb-3">
+                    <p class="text-[11px] font-medium text-gray-300">Website Created & Managed by</p>
+                    <p class="text-sm font-bold text-white">Piyush Bohara <span class="text-tu-gold font-normal text-xs">| ECOSS Member</span></p>
+                </div>
+                <p class="text-[10px] text-gray-600 tracking-wide uppercase">&copy; 2026 ECOSS Executive Body. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        const btn = document.getElementById('theme-global');
+        // --- Theme Toggle Logic (Brave/Mobile safe) ---
+        const themeGlobalBtn = document.getElementById('theme-global');
+        const themeMobileBtn = document.getElementById('theme-mobile');
         
         function applyTheme(theme) {
             if (theme === 'dark') {
@@ -148,19 +314,43 @@
             }
             try {
                 localStorage.setItem('ecoss-theme', theme);
-            } catch(e) {}
+            } catch(e) {
+                console.log("Local storage restricted.");
+            }
         }
 
-        btn.addEventListener('click', () => {
+        function handleThemeToggle() {
             const isDark = document.documentElement.classList.contains('dark');
             applyTheme(isDark ? 'light' : 'dark');
-        });
+        }
 
-        // Sync with browser changes
+        themeGlobalBtn.addEventListener('click', handleThemeToggle);
+        themeMobileBtn.addEventListener('click', handleThemeToggle);
+
+        // Listen for OS-level theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (!localStorage.getItem('ecoss-theme')) {
+            let storedTheme = null;
+            try { storedTheme = localStorage.getItem('ecoss-theme'); } catch(err) {}
+            
+            if (!storedTheme) {
                 applyTheme(e.matches ? 'dark' : 'light');
             }
+        });
+
+        // --- Mobile Menu Dropdown Logic ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
